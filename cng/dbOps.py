@@ -1,5 +1,4 @@
 from pgdb import connect
-
 from cng_db import dbhost, dbport, dbuser, dbpass, dbname
 
 def verifyInput():

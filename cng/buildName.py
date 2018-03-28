@@ -1,7 +1,6 @@
 from cng_vars import hNameFormat, hIncLength
 from dbOps import makeName, insertName, dbClose, newIncrementor
 from resolveRecord import checkNameExists
-
 dash = "-"
 underscore = "_"
 errorMessage = ""

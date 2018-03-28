@@ -125,6 +125,6 @@ This code is very much a .01 release. There are LOTS of things I plan on doing b
 * Allow the incrementor to be anywhere in the name, it currently must be at the end.
 * Cleanup the code, its kind of a mess right now with things in incorrect places.
 * Write integration guides for:
-** VMware vRA
-** VMware vRO
-** ManageIQ
+  * VMware vRA
+  * VMware vRO
+  * ManageIQ
