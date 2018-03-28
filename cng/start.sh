@@ -1,17 +1,18 @@
-#echo "I_LEN is ${I_LEN}" 
+#echo "I_LEN is ${I_LEN}"
 #echo "F_ORDER is ${F_ORDER}"
 #echo "D_HOST is ${D_HOST}"
 #echo "D_USER is ${D_USER}"
-#echo "D_PASS is ${D_PASS}" 
+#echo "D_PASS is ${D_PASS}"
 #echo "D_DB is ${D_DB}"
 #echo "D_PORT is ${D_PORT}"
+
 if [ -z "${I_LEN}" ] || [ -z "${F_ORDER}" ] || [ -z "${D_HOST}" ] || [ -z "${D_USER}" ] || [ -z "${D_PASS}" ] || [ -z "${D_DB}" ]; then
-	echo "A required paramater is missing. The following is what I recieved."
-	echo "I_LEN is ${I_LEN}" 
+	echo "A required parameter is missing. The following is what I recieved."
+	echo "I_LEN is ${I_LEN}"
 	echo "F_ORDER is ${F_ORDER}"
 	echo "D_HOST is ${D_HOST}"
 	echo "D_USER is ${D_USER}"
-	echo "D_PASS is ${D_PASS}" 
+	echo "D_PASS is ${D_PASS}"
 	echo "D_DB is ${D_DB}"
 	exit 1
 fi
