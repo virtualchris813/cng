@@ -1,9 +1,9 @@
 # Custom Name Generator (CNG)
 ## About CNG
-CNG is a small Python 2.x application that can be used to generate hostnames via an API call. The hostnames are stored in a PostgreSQL DB. The intention of this project is to proivide a naming service that can be used by any Cloud Management Platform (CMP) or other system requiring unique names in a specified format. CNG is provided as a Docker image but you can run it as a standalone Python app if you'd like.
+CNG is a Python 2.x application that can be used to generate hostnames via an API call. The hostnames are stored in a PostgreSQL DB. The intention of this project is to provide a naming service that can be used by any Cloud Management Platform (CMP) or other system requiring unique names in a specified format. CNG is provided as a Docker image but you can run it as a standalone Python app if you'd like.
 
 ## DISCLAIMER - PLEASE READ!
-### This software is created by me and has no connection to my employer. It is in no way supported or endorsed by VMware. Use this at your own risk, there is no warranty offered or expected! 
+### This software is created by me and has no connection to my employer. It is in no way supported or endorsed by VMware. Use this at your own risk, there is no warranty offered or expected!
 
 ## Database Requirements
 CNG __**does not**__ come with a bundled database. Please install a PostgerSQL database server and provide credentials to CNG. A sample database dump is provided for you to import. The database file is named cng_sql.txt and is in the postgres directory.
@@ -120,14 +120,15 @@ The file cng/cng_vars.py contains a full description of fields for the hostname 
 <br>
 
 ## To Do
-This code is very much a .01 release. There are LOTS of things I plan on doing but here are a few (in no particular order). If you'd like to help or have a suggestion, log an issue or submit a pull request! 
+This code is very much a .01 release. There are LOTS of things I plan on doing but here are a few (in no particular order). If you'd like to help or have a suggestion, log an issue or submit a pull request!
 * Port to Python 3.
+* Add authentication.
 * Add SSL Support.
 * Put the app behind an NGINX instance.
-* Add an update option.
+* Add an update name option.
 * Allow the incrementor to be anywhere in the name, it currently must be at the end.
 * Cleanup the code, its kind of a mess right now with things in incorrect places.
 * Write integration guides for:
   * VMware vRA
-  * VMware vRO
+  * VMware vRO (initial release of this doc is available)
   * ManageIQ
