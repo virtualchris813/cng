@@ -1,6 +1,5 @@
 ##!env/bin/python
 # Check if DNS record exists for a given name
-
 import dns.resolver
 
 def checkNameExists(lhName):
