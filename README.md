@@ -2,7 +2,7 @@
 ## About CNG
 CNG is a Python 2.x application that can be used to generate hostnames via an API call. The hostnames are stored in a PostgreSQL DB. The intention of this project is to provide a naming service that can be used by any Cloud Management Platform (CMP) or other system requiring unique names in a specified format. CNG is provided as a Docker image but you can run it as a standalone Python app if you'd like.
 
-## DISCLAIMER - PLEASE READ!
+## DISCLAIMER - PLEASE READ! <img src="https://github.com/virtualchris813/cng/blob/master/documentation/Alert.jpg" width="30" height="30" />
 ### This software is created by me and has no connection to my employer. It is in no way supported or endorsed by VMware. Use this at your own risk, there is no warranty offered or expected!
 
 ## Database Requirements
