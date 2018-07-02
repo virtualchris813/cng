@@ -59,7 +59,7 @@ SET default_with_oids = false;
 CREATE TABLE hostname (
     id integer NOT NULL,
     basename character varying(60) NOT NULL,
-    incrementor integer NOT NULL,
+    incrementor character varying(10) NOT NULL,
     inc_width integer NOT NULL,
     fullname character varying(100) NOT NULL
 );
