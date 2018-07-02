@@ -49,6 +49,7 @@ The file cng/cng_vars.py contains a full description of fields for the hostname 
 `#hUser4     =  A user defined string, whatever you want to fit your naming standard`<br>
 `#hUser5     =  A user defined string, whatever you want to fit your naming standard`<br>
 `#hIncLength =  The size of the incrementor, for eaxample 3 would result in the 1st being 001`<br>
+`#incIsChar  =  Set to 'True' if you would like the incrementor to be a letter instead of a number. For example 'a', 'b', 'c', etc.`<br>
 <br>
 `# EXAMPLES`<br>
 `# To create hostnames with a format of:`<br>
