@@ -1,4 +1,5 @@
 from pgdb import connect
+from getNext import getNextLetter  
 from cng_db import dbhost, dbport, dbuser, dbpass, dbname
 
 def verifyInput():
@@ -26,6 +27,7 @@ def checkIfBaseName(thisName):
     print(hQuery)
     return hQuery
 
+
 def getLastIncrementor(thisName, thisIncSize):
     # Get the last incrementor from the current list of matching entries in the DB
     print("this name and size ", thisName, thisIncSize)
@@ -36,36 +38,67 @@ def getLastIncrementor(thisName, thisIncSize):
         print("Hresult is ", hResult)
         return hResult
 
-def makeName(base, incWidth):
-    global nextInc
-    lowerBase = base.lower()
-    baseName = checkIfBaseName(lowerBase)
-    # If the basename has been used, get the next incrementor
-    # Otherwise, create a new one
-    # When figured out, return the full name
-    if baseName:
-        thisInc = getLastIncrementor(lowerBase, incWidth)
-#        print("thisInc is ", thisInc)
-        if thisInc:
-            nextInc = int(thisInc) + 1
-#           print("nextInc is ", nextInc)
-            newName = lowerBase + str(nextInc).zfill(incWidth)
-#           print("New Name is ", newName)
+
+def makeName(base, incWidth, incIsChar):
+    if incIsChar:
+        global nextInc
+        lowerBase = base.lower()
+        print("lowerBase is ", lowerBase)
+        baseName = checkIfBaseName(lowerBase)
+        print("baseName is ", baseName)
+        # If the basename has been used, get the next incrementor
+        # Otherwise, create a new one
+        # When figured out, return the full name
+        if baseName:
+            thisInc = getLastIncrementor(lowerBase, incWidth)
+            #        print("thisInc is ", thisInc)
+            if thisInc:
+	    	nextInc = getNextLetter(thisInc)
+            #    nextInc = chr(ord(thisInc) + 1)
+                print("nextInc is ", nextInc)
+                newName = lowerBase + nextInc
+                print("New Name is ", newName)
+            else:
+                nextInc = "a"
+                newName = lowerBase + nextInc
+                print("Newname is ", newName)
+        else:
+            nextInc = "a"
+            newName = lowerBase + str(nextInc)
+	    print("Newname is ", newName)
+	return newName
+    else:
+        global nextInc
+        lowerBase = base.lower()
+        baseName = checkIfBaseName(lowerBase)
+        # If the basename has been used, get the next incrementor
+        # Otherwise, create a new one
+        # When figured out, return the full name
+        if baseName:
+            thisInc = getLastIncrementor(lowerBase, incWidth)
+    #        print("thisInc is ", thisInc)
+            if thisInc:
+                nextInc = int(thisInc) + 1
+    #           print("nextInc is ", nextInc)
+                newName = lowerBase + str(nextInc).zfill(incWidth)
+    #           print("New Name is ", newName)
+            else:
+                nextInc = 1
+                newName = lowerBase + str(nextInc).zfill(incWidth)
+    #           print("Newname is ", newName)
         else:
             nextInc = 1
             newName = lowerBase + str(nextInc).zfill(incWidth)
-#           print("Newname is ", newName)
-    else:
-        nextInc = 1
-        newName = lowerBase + str(nextInc).zfill(incWidth)
-    return newName
+        return newName
+
 
 def insertName(baseName, inc, incWidth, fullName):
     # Add a name to the DB
     lBaseName = baseName.lower()
 #    print("Inserting " + lBaseName + " " + str(inc) + " " + str(incWidth) + " " + fullName)
-    cursor.execute("insert into hostname (basename, incrementor, inc_width, fullname) values (%s, %d, %d, %s)", (lBaseName, inc, incWidth, fullName))
+    cursor.execute("insert into hostname (basename, incrementor, inc_width, fullname) values (%s, %s, %d, %s)", (lBaseName, inc, incWidth, fullName))
     con.commit()
+
 
 def queryName(fullName):
     fullNameLower = fullName.lower()
@@ -78,6 +111,7 @@ def queryName(fullName):
     else:
         print("Did not find a match: ", fullNameLower)
         return False
+
 
 def deleteName(fullName):
     fullNameLower = fullName.lower()
@@ -92,9 +126,11 @@ def deleteName(fullName):
         print("No record was found to delete")
         return False
 
+
 def dbClose():
     cursor.close()
     con.close()
+
 
 def newIncrementor():
     newInc = nextInc

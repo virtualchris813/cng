@@ -17,6 +17,8 @@ def getIncrementorSize():
 
 def generateName(hFields):
     global hNameWoInc
+    global incIsChar
+    incIsChar = False
     hNameWoInc = ""
     hNameFields = hNameFormat()
     formatFields = hNameFields.split(" ")
@@ -49,6 +51,9 @@ def generateName(hFields):
         elif i == "hUser5":
             hUser5 = hFields[i]
             hNameWoInc = hNameWoInc + hUser5
+        elif i == "incIsChar":
+            print("incIsChar was given, setting incIsChar to True")
+            incIsChar = True
         else:
             print("Expected " + hNameFields.len() + "fields but didnt get the right number. \n")
             print("Plese check your input fields as well as fieldOrder in cng_vars.py")
@@ -56,7 +61,9 @@ def generateName(hFields):
     global hIncSize
     hIncSize = getIncrementorSize()
     hInc = getIncrementor(int(hIncSize))
-    hName = makeName(hNameWoInc, hInc)
+    print("Calling makename with incIsChar as True")
+    hName = makeName(hNameWoInc, hInc, incIsChar)
+    print("hName in generateName is ", hName)
     return (hName)
 
 def addName(baseName, inc, incWidth, fullName):
@@ -73,7 +80,7 @@ def addName(baseName, inc, incWidth, fullName):
         print("Name not found, creating in DB")
         global isError
         isError = 0
-    	insertName(baseName, inc, incWidth, fullName)
+    insertName(baseName, inc, incWidth, fullName)
 
 def addNewName(hFields):
     hName = generateName(hFields)
